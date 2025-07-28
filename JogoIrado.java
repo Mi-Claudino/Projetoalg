@@ -95,11 +95,11 @@ case zLocais.SALA_ESPELHO:
             System.out.println("\nSeu reflexo começa a te encarar, após alguns segundos seu coração quase sai boca quando o seu reflexo começa a falar com você. \n" +
             "'Dorros você tem confiança em si mesmo? Me mostre que se importa com seus amigos e lhe darei a força para derrotar Gor'go. Responda minhas perguntas e lhe darei o que deseja.'\n" +
             "\nPergunta 1: O seu amigo lenhador, qual é seu nome?\n");
-            if (scanner.nextLine().equalsIgnoreCase("glarbo")) acertos++;
-            System.out.println("Pergunta 2: nome da criança que perdeu o mapa?");
-            if (scanner.nextLine().equalsIgnoreCase("glarb")) acertos++;
-            System.out.println("Pergunta 3: nome do guerreiro lendário?");
-            if (scanner.nextLine().equalsIgnoreCase("glin")) acertos++;
+            if (scanner.nextLine().equalsIgnoreCase("Glarbo")) acertos++;
+            System.out.println("Pergunta 2: Qual o nome do seu esguio amigo que trouxe o equipamento de escalada?");
+            if (scanner.nextLine().equalsIgnoreCase("Antonidas")) acertos++;
+            System.out.println("Pergunta 3: De qual cidade você veio?");
+            if (scanner.nextLine().equalsIgnoreCase("Lukandor")) acertos++;
             if (acertos == 3) {
                 zItems.temEspada = true;
                 System.out.println("\nDorros, pegue isto e derrote aquele monstro.\n"+ 
@@ -154,7 +154,7 @@ case zLocais.SALA_ESPELHO:
                     break;
 
                 case zLocais.SALA_CORDA:
-                    System.out.println("\nVocê vê uma corda pendurada.");
+                    System.out.println("\nVocê vê uma corda pendurada de.");
                     if (!zItems.temCorda) {
                         System.out.println("1. Pegar corda");
                         System.out.println("2. Voltar");
@@ -265,7 +265,7 @@ case zLocais.SALA_ESPELHO:
             "Mas você é Dorros de Lunkador, nada pode te derrotar. Você enfinca a espada no monstro e jatos de sangue se espirram para todos os lados");
             System.out.println("Vitória! Você vence Gor'go! Depois de respirar um pouco você repara, atrás do, agora derrotado orc, se tem um pequeno baú. Nele um pequeno medalhão, e uma carta:\n" +
             "O medalhão da sacerdotiza de Lunkador, artefato sagrado que trás de volta a vida as pessoas mais amadas de seu empunhador, tudo que ele deve fazer é falar seus nomes na catedral central de Lunkador.\n" +
-            "'Espera, com isso, se meus amigos morreram nessa caverna, eu conseguirei salva-los'\nDepois de conseguir da caverna, você volta para a cidade de Lunkador, vai na catedral e fala os nomes 'Glarbo' e 'Antonidas'\n"+
+            "'Espera, com isso, se meus amigos morreram nessa caverna, eu conseguirei salva-los'\nDepois de conseguir sair da caverna, você volta para a cidade de Lunkador, vai na catedral e fala os nomes 'Glarbo' e 'Antonidas'\n"+
             "Como magica, seus amigos se materializam na sua frente\n Depois de muito papo furado e choro vocês decidem ir na taverna aproveitar o final de seu aniversário.\n" +
             "FINAL VERDADEIRO: O campeão de Lunkandor");
             zItems.temTesouro = true;

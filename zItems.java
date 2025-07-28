@@ -8,6 +8,6 @@ public class zItems {
     public static boolean temPergaminho = false;
     public static boolean temTesouro = false;
 
-        public static boolean espelhoQuebrado = false;
+    public static boolean espelhoQuebrado = false;
     public static int tentativasEspelho = 0;
 }
