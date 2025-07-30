@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class JogoIrado {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         String local = zLocais.COMECO;
         boolean jogando = true;
@@ -28,12 +28,11 @@ public class JogoIrado {
             "Você é Dorros, um guerreiro da cidade de Lunkador que decidiu explorar a caverna com amigos no seu aniversário, em busca do sonhado tesouro.\n"+
             "Depois de inesperadamente escorregar, você acorda perdido na caverna. Ao se levantar, percebe que se encontra sozinho. \n" + "\n" +
             "Olhando ao seu redor você encontra o seu lampião no chão.");
-        Thread.sleep(0500);
 
         while (jogando) {
             switch (local) {
                 case zLocais.COMECO:
-                    System.out.println( "Você encontra uma grande subida que brilha com um pouco de luz.\n" +
+                    System.out.println("Você encontra uma grande subida que brilha com um pouco de luz.\n" +
                     "Há também uma entrada escura que vai para mais fundo na caverna. \n" +
                     "\nO que deseja fazer?\n");
                     System.out.println("1. Subir pela entrada iluminada");
@@ -45,9 +44,6 @@ public class JogoIrado {
                     int opcComeco = scanner.nextInt(); scanner.nextLine();
                     if (opcComeco == 1) {
                         if (zItems.temCordaComGancho) {
-                            if (zItems.temTesouro)
-                                System.out.println("Com o tesouro da sarcedotiza de ");
-                            else
                                 System.out.println("\nAcovardado, sem saber de seus amigos e sem o grande tesouro de Gor'go, você decide fugir da caverna, você passa o resto do seus dias\n" +
                                 "pensando no que poderia ter feito se tivesse mais coragem, se tentansse entender como passar daquele espelho, o que aconteceria se você tentasse enfrentar gor'go. \n\n" +
                                 "FINAL RUIM: Fuga da caverna.");
@@ -62,7 +58,7 @@ public class JogoIrado {
                             System.out.println("\nO caminho a frente é escuro e assustador, você não tem coragem para prosseguir desse jeito.\n");
                     } else if (opcComeco == 3 && !zItems.temLampiao) {
                         zItems.temLampiao = true;
-                        System.out.println("\n Seu confiável lampião, com ele o caminho a frente não parece tão assustador, você o acende e o empunha.\n");
+                        System.out.println("\nSeu confiável lampião, com ele o caminho a frente não parece tão assustador, você o acende e o empunha.\n");
                     } else if (opcComeco == 0) {
                         System.out.println("Você abandonou a aventura.");
                         jogando = false;
@@ -94,7 +90,7 @@ case zLocais.SALA_ESPELHO:
     "O que deseja fazer?\n");
     System.out.println("1. Olhar para o espelho misterioso");
     System.out.println("2. Ir para a sala perto da jaqueta de Glarbo");
-    System.out.println("3. Volta para a sala principal da caverna");
+    System.out.println("3. Voltar para a sala principal da caverna");
 
     int opcEsp = scanner.nextInt(); scanner.nextLine();
     if (opcEsp == 1) {
@@ -111,9 +107,9 @@ case zLocais.SALA_ESPELHO:
             "'Dorros você tem confiança em si mesmo? Me mostre que se importa com seus amigos e lhe darei a força para derrotar Gor'go. Responda minhas perguntas e lhe darei o que deseja.'\n" +
             "\nPergunta 1: O seu amigo lenhador, qual é seu nome?\n");
             if (scanner.nextLine().equalsIgnoreCase("Glarbo")) acertos++;
-            System.out.println("Pergunta 2: Qual o nome do seu esguio amigo que trouxe o equipamento de escalada?");
+            System.out.println("\nPergunta 2: Qual o nome do seu esguio amigo que trouxe o equipamento de escalada?");
             if (scanner.nextLine().equalsIgnoreCase("Antonidas")) acertos++;
-            System.out.println("Pergunta 3: De qual cidade você veio?");
+            System.out.println("\nPergunta 3: De qual cidade você veio?");
             if (scanner.nextLine().equalsIgnoreCase("Lukandor")) acertos++;
             if (acertos == 3) {
                 zItems.temEspada = true;
@@ -158,10 +154,12 @@ case zLocais.SALA_ESPELHO:
                     break;
 
                 case zLocais.SUBIDA_DESCIDA:
-                    System.out.println("\nUm corredor com duas trilhas se abre.");
-                    System.out.println("1. Subida");
-                    System.out.println("2. Descida");
-                    System.out.println("3. Voltar");
+                    System.out.println("\nVocê fica de bruços e se aperta por aquela apertada entrada, no meio do caminho você encontra algo familiar\n" +
+                    "O colar de Antonidas, seu esguio amigo de Lunkador, 'sera que ele está ai pela frente?'\nDepois de mais um tempo rastejando, com dificuldade você chega a uma encruzilhada.\n"+
+                    "Acima, o caminho se abre confortavelmente, já abaixo, grossas teias de aranha se formam. Por onde deseja prosseguir?\n");
+                    System.out.println("1. Caminho aberto acima");
+                    System.out.println("2. Caminho com teias de aranha abaixo");
+                    System.out.println("3. Voltar para a sala principal da caverna");
                     int opcSD = scanner.nextInt(); scanner.nextLine();
                     if (opcSD == 1) local = zLocais.SALA_CORDA;
                     else if (opcSD == 2) local = zLocais.SALA_GANCHO;
@@ -169,19 +167,25 @@ case zLocais.SALA_ESPELHO:
                     break;
 
                 case zLocais.SALA_CORDA:
-                    System.out.println("\nVocê vê uma corda pendurada de.");
+                    System.out.println("\nEntrando na sala, nenhum sinal de seu amigo por ali, mas com um pouco mais de exploração você se depara, em um canto, cheio de teias de aranha em volta, uma pequena bolsa\n" +
+                    "'Essas são as coisas de Antonidas! Eu tenho certeza que ele trouxe uma corda, ele sempre foi o mais preparado de nós'. E lá estava, uma linda corda de escalada. no meio de seus manuais e rações." +
+                    "O que deseja fazer?");
                     if (!zItems.temCorda) {
-                        System.out.println("1. Pegar corda");
-                        System.out.println("2. Voltar");
+                        System.out.println("1. Pegar corda de Antonidas");
+                        System.out.println("2. Voltar para a encruzilhada das aranhas");
                         int opcC = scanner.nextInt(); scanner.nextLine();
                         if (opcC == 1) {
                             zItems.temCorda = true;
-                            System.out.println("Você pegou a corda.");
+                            System.out.println("Você pegou a corda! 'Se eu conseguir combinar com algum tipo de âncora eu devo conseguir sair daqui'");
+                                if (zItems.temGancho && !zItems.temCordaComGancho) {
+                                zItems.temCordaComGancho = true;
+                                System.out.println("'Ah é verdade, aquele gancho que encontrei no meio das velharias faria uma ótima ferramente para ir embora.' Você combina a corda com o gancho.");
+                            }
                         } else {
                             local = zLocais.SUBIDA_DESCIDA;
                         }
                     } else {
-                        System.out.println("1. Voltar");
+                        System.out.println("1. Voltar para a encruzilhada das aranhas");
                         scanner.nextInt(); scanner.nextLine();
                         local = zLocais.SUBIDA_DESCIDA;
                     }
@@ -189,9 +193,9 @@ case zLocais.SALA_ESPELHO:
 
                 case zLocais.SALA_GANCHO:
                     if (!zItems.temFacao) {
-                        System.out.println("\nTeias bloqueiam. Você precisa do facão.");
-                        System.out.println("1. Forçar passagem");
-                        System.out.println("2. Voltar");
+                        System.out.println("\nQuanto mais para baixo você avança, mais teias de aranha vão aparecendo, sem uma ferramenta para lidar com elas, o caminho será díficil");
+                        System.out.println("1. Forçar passagem entre as teias");
+                        System.out.println("2. Voltar para a encruzilhada");
                         int opcG = scanner.nextInt(); scanner.nextLine();
                         if (opcG == 1) {
                             System.out.println("As teias te prendem! Final ruim.");
@@ -200,20 +204,26 @@ case zLocais.SALA_ESPELHO:
                             local = zLocais.SUBIDA_DESCIDA;
                         }
                     } else {
-                        System.out.println("\nVocê corta as teias com o facão de Glarbo.");
-                        if (!zItems.temPergaminho) System.out.println("1. Pegar pergaminho");
-                        if (!zItems.temGancho) System.out.println("2. Pegar gancho");
-                        System.out.println("3. Voltar");
+                        System.out.println("\nQuanto mais para baixo você avança, mais teias de aranha vão aparecendo, mas com o facão, passar por ali é muito mais fácil\n"+
+                        "Depois de rastejar por um bom tempo você finalmente chega, uma sala lotada de pequenas aranhas, nenhum sinal de nenhum pertence de Antonidas\n"+
+                        "Um pouco desanimado, você ainda acha que é uma boa ideia vasculhar aquela sala, e você encontra pertences muito mais antigos.\n"+
+                        "Dentro das velharias, você encontra duas coisas que parecem do seu interesse, um velho pergaminho, e um velho gancho de escalada");
+                        if (!zItems.temPergaminho) System.out.println("1. Pegar e ler o pergaminho");
+                        if (!zItems.temGancho) System.out.println("2. Pegar o velho gancho");
+                        System.out.println("3. Voltar para a encruzilhada das aranhas");
                         int opcG2 = scanner.nextInt(); scanner.nextLine();
                         if (opcG2 == 1 && !zItems.temPergaminho) {
                             zItems.temPergaminho = true;
-                            System.out.println("Você pega o pergaminho.");
+                            System.out.println("Você pega o pergaminho em suas mãos, ao abri-lo você se surpreende, aquele documento de ter mais de 100 anos, 'como que isso foi parar aqui?'\n"+
+                            "Mesmo em um lugar bastante perigoso, sua curiosidade é maior que seu juízo, você lê o pergaminho inteiro \n"+
+                            "Dentro de muitas informações sobre as cavernas de Lukandor em um geral, algo te interessa muito mais do que o resto, uma fraquesa de Gor'go!\n" +
+                            "'Gor'go é implacável, mas não invencível, sua fraqueza é a luz, achamos que é por isso que ele se separou da horda de orcs e veio para aqui'");
                         } else if (opcG2 == 2 && !zItems.temGancho) {
                             zItems.temGancho = true;
-                            System.out.println("Você pega o gancho.");
+                            System.out.println("Você pegou o gancho! 'Se eu conseguir combinar com algum tipo de corda eu devo conseguir sair daqui'");
                             if (zItems.temCorda && !zItems.temCordaComGancho) {
                                 zItems.temCordaComGancho = true;
-                                System.out.println("Você combinou corda com gancho!");
+                                System.out.println("'Ah é verdade, a corda de Antonidas que encontrei faria uma ótima ferramente para ir embora.' Você combina a corda com o gancho.");
                             }
                         } else {
                             local = zLocais.SUBIDA_DESCIDA;
@@ -224,7 +234,6 @@ case zLocais.SALA_ESPELHO:
                 case zLocais.ANTES_DO_ORC:
                     if (!zItems.temFacao && !zItems.temEspada) {
                         System.out.println("\nRugidos ensurdecedores te surpreendem, sem algo para se defender não existe possibilidade de entrar na sala do grande Orc Gor'go");
-                        Thread.sleep(2000);
                         local = zLocais.CRUZAMENTO;
                     } else {
                         System.out.println("\nVocê ouve o Orc rugindo. Deseja continuar?");
@@ -237,7 +246,7 @@ case zLocais.SALA_ESPELHO:
                     break;
 
                 case zLocais.SALA_ORC:
-    System.out.println("\nVocê vai pra direção de Gar'go");
+    System.out.println("\nVocê vai pra direção de Gor'go");
 
     if (zItems.temEspada) {
         // FASE 1
@@ -255,8 +264,11 @@ case zLocais.SALA_ESPELHO:
         boolean fase1Correta = (fase1 == 1);
 
         // FASE 2
-        System.out.println("A batalha é feroz, quem vai levar a melhor, Gar'go está absolutamente furioso!\n O que deseja fazer?");
-        System.out.println("1. Atacar\n2. Desviar\n3. Seguir instruções do pergaminho");
+        System.out.println("A batalha é feroz, quem vai levar a melhor, Gor'go está absolutamente furioso!\n O que deseja fazer?");
+        System.out.println("1. Atacar\n2. Desviar\n");
+            if (zItems.temPergaminho) { 
+            System.out.println("3. Seguir instruções do pergaminho e cegar o monstro com seu lampião!\n"); 
+        } 
         int fase2 = scanner.nextInt(); scanner.nextLine();
 
         boolean fase2Correta = (fase2 == 3 && zItems.temPergaminho);
@@ -280,28 +292,25 @@ case zLocais.SALA_ESPELHO:
             "Mas você é Dorros de Lunkador, nada pode te derrotar. Você enfinca a espada no monstro e jatos de sangue se espirram para todos os lados");
             System.out.println("Vitória! Você vence Gor'go! Depois de respirar um pouco você repara, atrás do, agora derrotado orc, se tem um pequeno baú. Nele um pequeno medalhão, e uma carta:\n" +
             "O medalhão da sacerdotiza de Lunkador, artefato sagrado que trás de volta a vida as pessoas mais amadas de seu empunhador, tudo que ele deve fazer é falar seus nomes na catedral central de Lunkador.\n" +
-            "'Espera, com isso, se meus amigos morreram nessa caverna, eu conseguirei salva-los'\nDepois de conseguir sair da caverna, você volta para a cidade de Lunkador, vai na catedral e fala os nomes 'Glarbo' e 'Antonidas'\n"+
-            "Como magica, seus amigos se materializam na sua frente\n Depois de muito papo furado e choro vocês decidem ir na taverna aproveitar o final de seu aniversário.\n" +
+            "'Espera, com isso, se meus amigos morreram nessa caverna, eu conseguirei salva-los'\nDepois de sair da caverna, você volta para a cidade de Lunkador, vai na catedral e fala os nomes 'Glarbo' e 'Antonidas'\n"+
+            "Como magica, seus amigos se materializam na sua frente. 'AMIGOS! Aonde vocês foram parar depois de eu desmaiei?'\n'Eu virei janta de Orc HAHAHA!' Responde Glarbo com um sombrio entusiamo classico de seu bruto amigo.\n" +
+            "'Já eu fui levado por uma aranha gigantesca! A gente nunca mais vai comemorar um aniversário em cavernas!' Responde o assustado e esguio Antonidas\n" +
+            "Depois de um pouco de papo furado e lágrimas vocês decidem ir na taverna aproveitar o final de seu memorável aniversário.\n" +
             "FINAL VERDADEIRO: O campeão de Lunkandor");
-            zItems.temTesouro = true;
         } else {
-            System.out.println("Mesmo com a espada e muita confiança Gar'go é implacável, a batalha é furiosa e você parecia ter chance de ganhar, infelizmente o Orc não desiste em momento algum!\n" +
+            System.out.println("Mesmo com a espada e muita confiança Gor'go é implacável, a batalha é furiosa e você parecia ter chance de ganhar, infelizmente o Orc não desiste em momento algum!\n" +
             "Já cansado, Gar'go joga seu corpo em cima do seu, desferindo seu ultimo e fatal ataque! Você vê os olhos de Gar'go perdendo a vida se enficando na sua espada, mas o peso do monstro cai sobre você!\nFINAL RUIM: Ambos derrotados.");
         }
 
     } else {
-        System.out.println("Você entra na sala do grandiogo Gar'go, o monstro ruge e lança seus olhos na sua direção, com seu facão e seu lampião na mão você corre em direção ao monstro.\n" +
+        System.out.println("Você entra na sala do grandiogo Gor'go, o monstro ruge e lança seus olhos na sua direção, com seu facão e seu lampião na mão você corre em direção ao monstro.\n" +
         "O orc tenta te atacar mas você é o corajoso Dorros, o que pode dar de errado? Você o atinge na coxa. \nInesperadamente o monstro não parece esboçar muita reação, o corte não teve efeito!\n" +
         "'COMO ESSA CRIATURA PODE SER DERROTADA?' Você suplica, mas já é tarde de mais, mesmo com bravura, você é derrotado pelo Orc.\nFINAL RUIM: A queda do herói");
     }
-
     jogando = false;
     break;
             }
-
-
         }
-
         scanner.close();
         System.out.println("Obrigado por jogar!");
     }
